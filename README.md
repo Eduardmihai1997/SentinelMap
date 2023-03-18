@@ -4,54 +4,47 @@
 <h2>Description</h2>
 In this lab, I setup Azure Sentinel (SIEM) and connect it to a live virtual machine acting as a honey pot. I did this to observe live attacks (RDP Brute Force) from all around the world. I used a custom PowerShell script to look up the attackers Geolocation information and plot it on the Azure Sentinel Map! 
 
-<img src="https://i.imgur.com/lk4peN5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
+<h2>Technologies Used</h2>
 
-<h2>Languages and Utilities Used</h2>
-
-- <b>PowerShell</b> 
-- <b>Azure Sentinel</b>
+- <b>Microsoft Azure/Log Analytics Workspace and Sentinel (Mircosoft's SIEM)</b> 
+- <b>Powershell</b> 
+- <b>Remote desktop protocol</b>
 
 <h2>Environments Used </h2>
 
 - <b>Windows 10</b> (21H2)
 
-<h2>Program walk-through:</h2>
+<h2>Program walk-through:</h2> 
 
-<p align="center">
-Launch the utility: <br/>
-<br />
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
+- <b>Create a virtual machine in Azure (honeypot-vm) and turning firewalls off ( to make it vulnerable to brute force attacks)</b>
+- <b>Create a log repository in Azure (Log Analytics Workspace)</b> 
+<img src="https://i.imgur.com/YPa8lor.png" height="80%" width="80%"/>
+<br></br>
 
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
+- <b>Log into VM with Remote Desktop(with 1 log fail)</b>  
+- <b>ObserveEvent Viewer Logs for the failed log(4625) in VM</b?
+<img src="https://i.imgur.com/tbKw3Zd.png" height="80%" width="80%" />
+<br></br>
+
+- <b>Run a configured script(to get Geo Data from attackers)</b>
+- <b>Get Geolocation.io API Key</b>
+<img src="https://i.imgur.com/EiBr31T.png" height="80%" width="80%" />
+ <br></br>
+
+- <b>Create a custom geolocation log in Log Analytics Workspace</b> 
+- <b>Secure connection between honeypot-vm and log analytics</b>
+<img src="https://i.imgur.com/0Avpw9p.png" height="80%" width="80%" />
+<br></br>
+
+- <b> Extract geo-data from the RawData of sample logs</b>
+- <b> Extracting more data from the sample log</b>
+<img src="https://i.imgur.com/rv69y55.png" height="80%" width="80%" />
+<br></br> 
+
+- <b> Set up the map within Microsoft Sentinel<b/>
+- <b> Threat visualization</b>
+<img src="https://i.imgur.com/tkjkhdp.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/lk4peN5.png" height="80%" width="80%" />
+<br></br>
+
